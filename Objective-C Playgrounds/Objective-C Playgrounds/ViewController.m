@@ -20,8 +20,8 @@
     [super viewDidLoad];
 //    [Variables run];
 //    [Enums run];
-    [Collections run];
-//    [Functions run];
+//    [Collections run];
+    [Functions run];
 //    [Classes run];
 }
 
