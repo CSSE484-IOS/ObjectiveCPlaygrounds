@@ -15,7 +15,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var gameStateNavBar: UINavigationBar!
   @IBOutlet weak var gameBoardImageView: UIImageView!
 
-  var game = TicTacToeGame()
+  var game = ObjCTicTacToeGame()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
 
   @IBAction func pressedNewGame(_ sender: Any) {
     print("You pressed new game!")
-    game = TicTacToeGame()
+    game = ObjCTicTacToeGame()
     updateView()
   }
 
@@ -51,25 +51,25 @@ class ViewController: UIViewController {
     var xImage: UIImage
     var oImage: UIImage
     if (traitCollection.horizontalSizeClass == UIUserInterfaceSizeClass.compact) {
-      gameStateLabel.text = game.gameState.rawValue
+      gameStateLabel.text = game.getStateString()
       xImage = #imageLiteral(resourceName: "iPhone_X")
       oImage = #imageLiteral(resourceName: "iPhone_O")
     } else {
-      gameStateNavBar.topItem?.title = game.gameState.rawValue
+      gameStateNavBar.topItem?.title = game.getStateString()
       xImage = #imageLiteral(resourceName: "iPad_X")
       oImage = #imageLiteral(resourceName: "iPad_O")
     }
 
     for i in 0..<9 {
       let button = gameBoardButtons[i]
-      switch (game.gameBoard[i]) {
-      case .x:
+        switch (game.getBoardMark(at: i)) {
+      case MarkType.X:
         button.setImage(xImage, for: UIControlState.normal)
-      case .o:
+      case MarkType.O:
         button.setImage(oImage, for: UIControlState.normal)
-      case .none:
+      case MarkType.none:
         button.setImage(nil, for: UIControlState.normal)
-      }
+        }
     }
   }
 
