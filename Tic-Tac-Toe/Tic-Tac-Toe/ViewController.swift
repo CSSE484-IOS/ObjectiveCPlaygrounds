@@ -71,6 +71,7 @@ class ViewController: UIViewController {
         button.setImage(nil, for: UIControlState.normal)
         }
     }
+    print(game)
   }
 
 }
